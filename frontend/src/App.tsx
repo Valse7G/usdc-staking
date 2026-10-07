@@ -75,9 +75,19 @@ export default function App() {
       { address: STAKING_ADDRESS, abi: stakingAbi, functionName: 'totalStaked' },
       { address: STAKING_ADDRESS, abi: stakingAbi, functionName: 'rewardFeeBps' },
       { address: STAKING_ADDRESS, abi: stakingAbi, functionName: 'earlyExitFeeBps' },
-      ...[0n, 1n, 2n, 3n].map((i) => ({ address: STAKING_ADDRESS, abi: stakingAbi, functionName: 'tiers' as const, args: [i] as const })),
     ],
     query: { enabled: configured, refetchInterval: 10_000 },
+  })
+
+  // Separate hook: mixing different function names in one array breaks TypeScript inference.
+  const tierData = useReadContracts({
+    contracts: [0n, 1n, 2n, 3n].map((i) => ({
+      address: STAKING_ADDRESS,
+      abi: stakingAbi,
+      functionName: 'tiers' as const,
+      args: [i] as const,
+    })),
+    query: { enabled: configured, refetchInterval: 30_000 },
   })
 
   const pool = (stats.data?.[0]?.result as bigint | undefined) ?? 0n
@@ -85,7 +95,7 @@ export default function App() {
   const feeBps = BigInt((stats.data?.[2]?.result as number | undefined) ?? 1500)
   const exitBps = BigInt((stats.data?.[3]?.result as number | undefined) ?? 500)
   const apys = [0, 1, 2, 3].map((i) => {
-    const r = stats.data?.[4 + i]?.result as readonly [bigint, number] | undefined
+    const r = tierData.data?.[i]?.result as readonly [bigint, number] | undefined
     return r ? r[1] : [200, 500, 1000, 2000][i]
   })
 
