@@ -6,7 +6,7 @@ const path = require('path')
 
 async function main() {
   const amount = ethers.parseUnits(process.env.AMOUNT || '100', 6)
-  const file = path.join(__dirname, '..', 'deployments', `${network.name}.json`)
+  const file = path.join(__dirname, '..', 'deployments', 'latest.json')
   const { address, usdc } = JSON.parse(fs.readFileSync(file, 'utf8'))
 
   const [signer] = await ethers.getSigners()

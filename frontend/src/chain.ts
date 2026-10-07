@@ -1,4 +1,5 @@
 import { defineChain } from 'viem'
+import latest from './deployments/latest.json'
 
 export const arcTestnet = defineChain({
   id: 5042002,
@@ -12,5 +13,7 @@ export const arcTestnet = defineChain({
 // USDC ERC-20 interface on Arc (6 decimals)
 export const USDC_ADDRESS = '0x3600000000000000000000000000000000000000' as const
 export const USDC_DECIMALS = 6
-export const STAKING_ADDRESS = (import.meta.env.VITE_STAKING_ADDRESS ?? '0x0000000000000000000000000000000000000000') as `0x${string}`
+// Source of truth: src/deployments/latest.json (written by `npm run deploy:arc`).
+// VITE_STAKING_ADDRESS, if set (e.g. in Vercel), takes precedence.
+export const STAKING_ADDRESS = ((import.meta.env.VITE_STAKING_ADDRESS as string | undefined) || latest.address) as `0x${string}`
 export const FAUCET_URL = 'https://faucet.circle.com'

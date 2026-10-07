@@ -1,0 +1,18 @@
+{
+  "network": "arcTestnet",
+  "chainId": 5042002,
+  "contract": "UsdcStaking",
+  "address": "0xD26b9a76578e40bB1AB996d9Db69c8f3412B419e",
+  "owner": "0x1Dc72450B3e2782AcD669D7C27073f2C8F2c9894",
+  "usdc": "0x3600000000000000000000000000000000000000",
+  "deployer": "0x1Dc72450B3e2782AcD669D7C27073f2C8F2c9894",
+  "constructorArgs": [
+    "0x3600000000000000000000000000000000000000",
+    "0x1Dc72450B3e2782AcD669D7C27073f2C8F2c9894"
+  ],
+  "txHash": "0x6a36b21590642559a28712472d1e9ed409ebe3e8544f84859f43b1917dbed05a",
+  "blockNumber": 65958664,
+  "deployedAt": "2026-10-07T11:35:45.536Z",
+  "explorerUrl": "https://testnet.arcscan.app/address/0xD26b9a76578e40bB1AB996d9Db69c8f3412B419e",
+  "verified": false
+}

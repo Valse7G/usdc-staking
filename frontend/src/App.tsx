@@ -103,7 +103,7 @@ export default function App() {
       </header>
 
       {!configured && (
-        <div className="banner warn">Set VITE_STAKING_ADDRESS to the deployed contract address (see README).</div>
+        <div className="banner warn">No contract deployed yet: update src/deployments/latest.json (see README).</div>
       )}
       {wrongChain && (
         <div className="banner warn">

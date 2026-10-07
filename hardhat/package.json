@@ -6,6 +6,8 @@
     "compile": "hardhat compile",
     "test": "hardhat test",
     "deploy:arc": "hardhat run scripts/deploy.js --network arcTestnet",
+    "verify:arc": "hardhat run scripts/verify.js --network arcTestnet",
+    "flatten": "hardhat run scripts/flatten.js",
     "fund:arc": "hardhat run scripts/fund-pool.js --network arcTestnet"
   },
   "dependencies": {

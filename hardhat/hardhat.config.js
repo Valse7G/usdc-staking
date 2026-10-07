@@ -16,4 +16,19 @@ module.exports = {
       accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
     },
   },
+  // ArcScan is a Blockscout explorer: the key is ignored but must be non-empty.
+  etherscan: {
+    apiKey: { arcTestnet: 'empty' },
+    customChains: [
+      {
+        network: 'arcTestnet',
+        chainId: 5042002,
+        urls: {
+          apiURL: 'https://testnet.arcscan.app/api',
+          browserURL: 'https://testnet.arcscan.app',
+        },
+      },
+    ],
+  },
+  sourcify: { enabled: false },
 }
